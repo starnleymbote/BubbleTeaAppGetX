@@ -1,6 +1,8 @@
 import 'package:bubble_tea_getx/models/bubble_tea_shop.dart';
-import 'package:bubble_tea_getx/resources/app_color.dart' as AppColors;
+import 'package:bubble_tea_getx/models/drink.dart' show Drink;
 import 'package:flutter/material.dart';
+
+import '../components/drink_tile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -19,7 +21,7 @@ class _HomePageState extends State<HomePage> {
       //Title of the App here by defining the AppBar
       appBar: AppBar(
         elevation: 15,
-        backgroundColor: AppColors.appBarBgClr,
+        backgroundColor: Colors.brown.shade800,
         title: const Text(
           "Bubble Tea",
           style: TextStyle(
@@ -33,11 +35,16 @@ class _HomePageState extends State<HomePage> {
 
       //List of drinks to be sold here
       body: Container(
+        color: Colors.brown.shade200,
         child: ListView.builder(
-          itemCount: 1,
+          itemCount: _bubbleTea == null ? 0 : _bubbleTea.bubble_tea_shop.length,
           itemBuilder: (context, index) {
-            print("This is the list of drinks  ${_bubbleTea}");
-            //return DrinkTile(name: name, imagePath: imagePath, price: price);
+            Drink individualDrink = _bubbleTea.bubble_tea_shop[index];
+
+            return DrinkTile(
+                name: individualDrink.name,
+                imagePath: individualDrink.imagePath,
+                price: individualDrink.price);
           },
         ),
       ),
