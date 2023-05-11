@@ -1,6 +1,7 @@
 import 'package:bubble_tea_getx/models/drink.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 
-class BubbleTeaShop {
+class BubbleTeaShop extends GetxController {
   //List of Drinks for sale
   final List<Drink> bubble_tea_shop = [
     Drink(
@@ -26,13 +27,24 @@ class BubbleTeaShop {
         price: 250.0),
   ];
 
-  //Get All Drinks on sale
-  // void getAllDrinks() {
-  //   _bubble_tea_shop;
-  // }
+  //list all drinks in users cart
+  final List<Drink> _userCart = [];
+
+  //get user cart
+  List<Drink> get cart => _userCart;
+
+  //Add drinks to the cart
+  void addToCart(Drink drink) {
+    _userCart.add(drink);
+    //update();
+  }
   //User Adding a drink to the cart
 
   //User removing a drink from the cart
+  void removeFromCart(Drink drink) {
+    _userCart.remove(drink);
+    update();
+  }
 
   //Get drinks from the cart
 }
