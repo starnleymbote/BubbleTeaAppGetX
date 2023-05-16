@@ -47,10 +47,17 @@ class _OrderPageState extends State<OrderPage> {
   //Add the order to Cart
   void addToCart(Drink drink) {
     _myShop.addToCart(drink);
-    print("Users cart has ${_myShop.cart.length.toString()}");
-    print("This is the ordered drink ${drink.name}");
-    print(
-        "The length of the list is ${_myShop.bubble_tea_shop.length.toString()}");
+
+    Get.back();
+    Get.snackbar(
+      "Bubble Tea App",
+      "${drink.name} was added successfully to the cart 🎉",
+      icon: Icon(
+        Icons.add_shopping_cart,
+        color: Colors.brown.shade400,
+      ),
+      snackPosition: SnackPosition.TOP,
+    );
   }
 
   @override
