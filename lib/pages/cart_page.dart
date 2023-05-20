@@ -24,20 +24,24 @@ class _CartPageState extends State<CartPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.brown.shade200,
-      child: ListView.builder(
-        itemCount: _bubbleTea.cart == null ? 0 : _bubbleTea.cart.length,
-        itemBuilder: (context, index) {
-          Drink individualDrink = _bubbleTea.cart[index];
+    return GetBuilder<BubbleTeaShop>(builder: (context) {
+      return Container(
+        color: Colors.brown.shade200,
+        child: ListView.builder(
+          itemCount: _bubbleTea.cart == null ? 0 : _bubbleTea.cart.length,
+          itemBuilder: (context, index) {
+            Drink individualDrink = _bubbleTea.cart[index];
 
-          return DrinkTile(
+            return DrinkTile(
               onTap: () => removeFromCart(individualDrink),
               name: individualDrink.name,
               imagePath: individualDrink.imagePath,
-              price: individualDrink.price);
-        },
-      ),
-    );
+              price: individualDrink.price,
+              trailing: Icon(Icons.delete_forever, color: Colors.red.shade200),
+            );
+          },
+        ),
+      );
+    });
   }
 }

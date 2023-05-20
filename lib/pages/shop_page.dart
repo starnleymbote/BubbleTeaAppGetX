@@ -33,10 +33,12 @@ class _ShopPageState extends State<ShopPage> {
           Drink individualDrink = _bubbleTea.bubble_tea_shop[index];
 
           return DrinkTile(
-              onTap: () => goToOrderPage(individualDrink),
-              name: individualDrink.name,
-              imagePath: individualDrink.imagePath,
-              price: individualDrink.price);
+            onTap: () => goToOrderPage(individualDrink),
+            name: individualDrink.name,
+            imagePath: individualDrink.imagePath,
+            price: individualDrink.price,
+            trailing: Icon(Icons.arrow_forward, color: Colors.brown.shade50),
+          );
         },
       ),
     );

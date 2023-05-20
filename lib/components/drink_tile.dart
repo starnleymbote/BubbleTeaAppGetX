@@ -5,14 +5,16 @@ class DrinkTile extends StatelessWidget {
   final String imagePath;
   final double price;
   void Function() onTap;
+  final Widget trailing;
 
-  DrinkTile(
-      {Key? key,
-      required this.name,
-      required this.imagePath,
-      required this.onTap,
-      required this.price})
-      : super(key: key);
+  DrinkTile({
+    Key? key,
+    required this.name,
+    required this.imagePath,
+    required this.onTap,
+    required this.price,
+    required this.trailing,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +54,7 @@ class DrinkTile extends StatelessWidget {
           subtitle: Text(
             this.price.toString(),
           ),
-          trailing: Icon(Icons.arrow_forward, color: Colors.brown.shade50),
+          trailing: this.trailing,
         ),
       ),
     );
